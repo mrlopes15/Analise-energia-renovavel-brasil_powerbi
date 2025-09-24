@@ -54,22 +54,22 @@ As principais descobertas estratégicas geradas a partir do dashboard foram:
 
 ## 4. Estratégia da Solução
 
-O projeto foi executado seguindo o ciclo de vida completo de um projeto de BI:
+O projeto foi executado seguindo o ciclo de vida completo de um projeto de BI, dividido em quatro etapas principais:
 
-**Passo 1 - Extração e Limpeza (ETL) no Power Query:**
-   	* O arquivo `.csv` original apresentava desafios significativos, como separadores de milhar e decimal no padrão brasileiro e erros de tipo. Foi aplicado um processo de limpeza robusto para garantir a qualidade da análise.
+**1. Extração e Limpeza (ETL) no Power Query:**
+   * O arquivo `.csv` original da ANEEL apresentava desafios significativos, como separadores de milhar e decimal no padrão brasileiro, erros de tipo e valores nulos. Foi aplicado um processo de limpeza robusto para garantir a qualidade e a precisão da análise.
 
-**Passo 2 -  Modelagem de Dados:**
-   	* Foi implementado um **Modelo Estrela (Star Schema)** com uma tabela fato (`fGeracao`) e quatro dimensões (`dLocalizacao`, `dFonte`, `dUsina`, `dTipoAtuacao`) para otimizar a performance e a clareza.
+**2. Modelagem de Dados:**
+   * Foi implementado um **Modelo Estrela (Star Schema)** com uma tabela fato (`fGeracao`) e quatro dimensões (`dLocalizacao`, `dFonte`, `dUsina`, `dTipoAtuacao`) para otimizar a performance das consultas e a clareza do modelo analítico.
 
-**Passo 3 - Criação de Medidas (DAX):**
-	* A criação dos KPIs estratégicos (`Potência em Operação`, `Potência Planejada`) utilizando a função `CALCULATE` para aplicar contextos de negócio específicos (ex: filtrar apenas a fase "Operação").
-     	* O desenvolvimento de medidas de performance para comparar o planejado (Outorgada) vs. o operação (Fiscalizada).
-		* Foram criadas medidas DAX para calcular os principais indicadores em Gigawatts (GW) e Kilowatts (KW) para permitir a contagem e soma dinâmicas na página de catálogo, refletindo as seleções do usuário.
+**3. Criação de Medidas (DAX):**
+   * A inteligência do dashboard foi construída com um conjunto de medidas DAX robustas. O trabalho incluiu:
+     * A criação dos KPIs estratégicos (`Potência em Operação`, `Potência Planejada`) utilizando a função `CALCULATE` para aplicar contextos de negócio específicos.
+     * O desenvolvimento de medidas de performance, para comparar o planejado (Outorgada) vs. o realizado (Fiscalizada).
+     * A implementação de medidas flexíveis para a página de Catálogo, que se adaptam em tempo real aos filtros selecionados pelo usuário.
 
-**Passo 4 - Visualização e Storytelling (Power BI):**
-   	* O dashboard foi estruturado em uma narrativa de 4 páginas para guiar o usuário de uma visão macro para o detalhe, usando princípios de design para destacar os insights.
-
+**4. Visualização e Storytelling (Power BI):**
+   * O dashboard foi estruturado em uma narrativa visual de 4 páginas (Resumo, Análise Geográfica, Análise Estratégica e Catálogo) para guiar o usuário de uma visão macro para o detalhe, usando princípios de design para destacar os insights.
 ---
 
 ## 5. Ferramentas Utilizadas
