@@ -65,7 +65,7 @@ O projeto foi executado seguindo o ciclo de vida completo de um projeto de BI:
 **Passo 3 - Criação de Medidas (DAX):**
 	* A criação dos KPIs estratégicos (`Potência em Operação`, `Potência Planejada`) utilizando a função `CALCULATE` para aplicar contextos de negócio específicos (ex: filtrar apenas a fase "Operação").
      	* O desenvolvimento de medidas de performance para comparar o planejado (Outorgada) vs. o operação (Fiscalizada).
-     	* Foram criadas medidas DAX para calcular os principais indicadores em Gigawatts (GW) e Kilowatts (KW) para permitir a contagem e soma dinâmicas na página de catálogo, refletindo as seleções do usuário.
+		* Foram criadas medidas DAX para calcular os principais indicadores em Gigawatts (GW) e Kilowatts (KW) para permitir a contagem e soma dinâmicas na página de catálogo, refletindo as seleções do usuário.
 
 **Passo 4 - Visualização e Storytelling (Power BI):**
    	* O dashboard foi estruturado em uma narrativa de 4 páginas para guiar o usuário de uma visão macro para o detalhe, usando princípios de design para destacar os insights.
