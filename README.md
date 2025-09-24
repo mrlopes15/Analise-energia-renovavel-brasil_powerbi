@@ -79,6 +79,12 @@ O projeto foi executado seguindo o ciclo de vida completo de um projeto de BI, d
 * **Microsoft Power BI**
 
 ---
+## Arquivos do Projeto
+
+Neste repositório, você encontrará dois formatos principais:
+
+* **`.pbip` (Power BI Project):** Este é o arquivo fonte principal, ideal para versionamento e para visualizar as mudanças no código DAX.
+* **`.pbix` (Power BI Desktop):** Uma versão compilada do projeto para fácil visualização por qualquer pessoa que tenha o Power BI Desktop instalado.
 
 ## 👤 Autor
 
