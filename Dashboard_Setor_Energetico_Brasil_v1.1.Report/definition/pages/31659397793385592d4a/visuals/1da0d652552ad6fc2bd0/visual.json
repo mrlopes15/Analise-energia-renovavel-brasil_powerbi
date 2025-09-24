@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "1da0d652552ad6fc2bd0",
+  "position": {
+    "x": 259.17327939422228,
+    "y": 574.99645592379375,
+    "z": 5000,
+    "height": 144.45723769514029,
+    "width": 890.8196324533651,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "A análise aprofundada da estratégia regional revela um paradoxo fundamental na matriz energética renovável do Brasil. A "
+                  },
+                  {
+                    "value": "região Norte",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ", embora concentre a grande maioria das usinas em número (mais de 13 mil, impulsionadas por projetos de Geração Distribuída), contribui com uma fração mínima da potência total do país (apenas 0,05 GW)."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Em contrapartida, a liderança nacional é definida pela estratégia de "
+                  },
+                  {
+                    "value": "Geração Centralizada",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " das regiões "
+                  },
+                  {
+                    "value": "Nordeste",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " (40,69 GW) e "
+                  },
+                  {
+                    "value": "Sudeste",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " (8,50 GW), que, com um número muito menor de usinas, são responsáveis pela quase totalidade da capacidade instalada. Esta descoberta evidencia que o volume de potência não está correlacionado com o número de projetos, mas sim com o porte e a estratégia de investimento de cada região."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'O Paradoxo da Geração Distribuída vs. Centralizada'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

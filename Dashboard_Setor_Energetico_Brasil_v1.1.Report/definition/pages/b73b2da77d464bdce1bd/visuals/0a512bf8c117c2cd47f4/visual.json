@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "0a512bf8c117c2cd47f4",
+  "position": {
+    "x": 13.923853923853924,
+    "y": 642.48640248640254,
+    "z": 9000,
+    "height": 77.575757575757578,
+    "width": 602.7039627039627,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Nota:",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " Os dados para o ano de 2025 são parciais (referência: 01/Set) e podem estar sub-representados devido ao "
+                  },
+                  {
+                    "value": "tempo de consolidação e registro oficial",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " dos dados pela ANEEL. A aparente desaceleração pode refletir tanto este atraso natural nos dados quanto os desafios de escoamento (curtailment) enfrentados pelo setor."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

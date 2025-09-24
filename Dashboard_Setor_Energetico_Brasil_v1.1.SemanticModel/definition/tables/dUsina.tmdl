@@ -1,0 +1,41 @@
+table dUsina
+	lineageTag: 1d6244bc-c1fb-4a60-9a8f-a5c4b09b1643
+
+	column Empreendimento
+		dataType: string
+		lineageTag: dc87117c-991c-41b9-8ccd-3e3f93c5ac9b
+		summarizeBy: none
+		sourceColumn: Empreendimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Proprietário / Regime de Exploração'
+		dataType: string
+		lineageTag: 12291770-f5dc-4cae-b5a4-32ea9fef3252
+		summarizeBy: none
+		sourceColumn: Proprietário / Regime de Exploração
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Município (s)'
+		dataType: string
+		lineageTag: 87970fb6-d298-49a4-bd47-76fbd90b3b97
+		summarizeBy: none
+		sourceColumn: Município (s)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dUsina = m
+		mode: import
+		source =
+				let
+				    Fonte = fGeracao,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"Empreendimento", "Proprietário / Regime de Exploração", "Município (s)"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas", {"Empreendimento"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

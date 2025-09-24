@@ -1,0 +1,33 @@
+table dFonte
+	lineageTag: 89cc165b-5513-46ce-b32c-840681377586
+
+	column Fonte
+		dataType: string
+		lineageTag: b2405c5f-a8cd-4864-8992-e5e043259799
+		summarizeBy: none
+		sourceColumn: Fonte
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 804a3629-52f2-4e62-ae36-9ca74e943fca
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dFonte = m
+		mode: import
+		source =
+				let
+				    Fonte = fGeracao,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"Fonte", "Tipo"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas", {"Fonte"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,76 @@
+table dLocalizacao
+	lineageTag: 37b43ec5-506b-4c99-ac40-b72e4f0db87f
+
+	column UF
+		dataType: string
+		lineageTag: 71dee332-9318-4b76-8ff3-1143674c0e64
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Regiao
+		dataType: string
+		lineageTag: a6c317b9-35b9-4c43-bf92-400f414c4ed1
+		summarizeBy: none
+		sourceColumn: Regiao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dLocalizacao = m
+		mode: import
+		source = ```
+				let
+				    // Etapa 1: Carrega o arquivo CSV, especificando o PONTO E VÍRGULA como delimitador.
+				    Fonte = Csv.Document(File.Contents("C:\Users\Notebook\Documents\PROGRAMAÇÃO\Projeto_Energia_Novo\dados_energia.csv"),[Delimiter=";", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				
+				    // Etapa 2: Remove a primeira linha de dados, que é lixo.
+				    #"Primeira Linha Removida" = Table.Skip(Fonte,1),
+				
+				    // Etapa 3: Promove a primeira linha restante como cabeçalho.
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Primeira Linha Removida", [PromoteAllScalars=true]),
+				
+				    // Etapa 4: Filtra apenas para Eólica e Solar.
+				    #"Linhas Filtradas" = Table.SelectRows(#"Cabeçalhos Promovidos", each ([Fonte] = "EOL" or [Fonte] = "UFV")),
+				
+				    // Etapa 5: Limpa e converte as colunas numéricas usando a fórmula à prova de erros.
+				    #"Colunas Numéricas Limpas" = Table.AddColumn(#"Linhas Filtradas", "PotenciaFiscalizada_Limpa", each try Number.From( Text.Replace([#"Potência Fiscalizada (kW)"], ",", "."), "en-US") otherwise null),
+				    #"Colunas Numéricas Limpas1" = Table.AddColumn(#"Colunas Numéricas Limpas", "PotenciaOutorgada_Limpa", each try Number.From( Text.Replace([#"Potência Outorgada (kW)"], ",", "."), "en-US") otherwise null),
+				    #"Colunas Numéricas Limpas2" = Table.AddColumn(#"Colunas Numéricas Limpas1", "Latitude_Limpa", each try Number.From( Text.Replace([#"Latitude Decimal"], ",", "."), "en-US") otherwise null),
+				    #"Colunas Numéricas Limpas3" = Table.AddColumn(#"Colunas Numéricas Limpas2", "Longitude_Limpa", each try Number.From( Text.Replace([#"Longitude Decimal"], ",", "."), "en-US") otherwise null),
+				
+				    // Etapa 6: Seleciona apenas as colunas que vamos usar.
+				    #"Colunas Selecionadas" = Table.SelectColumns(#"Colunas Numéricas Limpas3",{"Empreendimento", "UF", "Fonte", "Fase", "Entrada em Operação", "Tipo", "Tipo de Atuação", "PotenciaFiscalizada_Limpa", "PotenciaOutorgada_Limpa", "Latitude_Limpa", "Longitude_Limpa"}),
+				
+				    // Etapa 7: Renomeia as colunas limpas para seus nomes finais.
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Selecionadas",{
+				        {"PotenciaFiscalizada_Limpa", "Potência Fiscalizada (kW)"}, 
+				        {"PotenciaOutorgada_Limpa", "Potência Outorgada (kW)"}, 
+				        {"Latitude_Limpa", "Latitude Decimal"}, 
+				        {"Longitude_Limpa", "Longitude Decimal"}
+				    }),
+				
+				    // Etapa 8: Define os tipos de dados finais para garantir que tudo está correto.
+				    #"Tipos Finais Alterados" = Table.TransformColumnTypes(#"Colunas Renomeadas",{
+				        {"Empreendimento", type text}, {"UF", type text}, {"Fonte", type text}, {"Fase", type text}, 
+				        {"Tipo", type text}, {"Tipo de Atuação", type text}, 
+				        {"Entrada em Operação", type date}, 
+				        {"Potência Fiscalizada (kW)", type number}, {"Potência Outorgada (kW)", type number}, 
+				        {"Latitude Decimal", type number}, {"Longitude Decimal", type number}
+				    }),
+				    // Etapa 8: Define os tipos de dados finais para garantir que tudo está correto.
+				    UF1 = #"Tipos Finais Alterados"[UF],
+				    #"Convertido para Tabela" = Table.FromList(UF1, Splitter.SplitTextByDelimiter(";"), null, null, ExtraValues.Error),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Convertido para Tabela",{{"Column1", type text}}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Tipo Alterado",{{"Column1", "UF"}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Colunas Renomeadas1", "Regiao", each if [UF] = "AC" then "Norte" else if [UF] = "AL" then "Nordeste" else if [UF] = "AP" then "Norte" else if [UF] = "AM" then "Norte" else if [UF] = "BA" then "Nordeste" else if [UF] = "CE" then "Nordeste" else if [UF] = "DF" then "Centro-Oeste" else if [UF] = "ES" then "Sudeste" else if [UF] = "GO" then "Centro-Oeste" else if [UF] = "MA" then "Nordeste" else if [UF] = "MT" then "Centro-Oeste" else if [UF] = "MS" then "Centro-Oeste" else if [UF] = "MG" then "Sudeste" else if [UF] = "PA" then "Norte" else if [UF] = "PB" then "Nordeste" else if [UF] = "PR" then "Sul" else if [UF] = "PE" then "Nordeste" else if [UF] = "PI" then "Nordeste" else if [UF] = "RJ" then "Sudeste" else if [UF] = "RN" then "Nordeste" else if [UF] = "RS" then "Sul" else if [UF] = "RO" then "Norte" else if [UF] = "RR" then "Norte" else if [UF] = "SC" then "Sul" else if [UF] = "SP" then "Sudeste" else if [UF] = "SE" then "Nordeste" else if [UF] = "TO" then "Norte" else "Indefinido"),
+				    #"Duplicatas Removidas1" = Table.Distinct(#"Coluna Condicional Adicionada", {"UF"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Duplicatas Removidas1", {"UF"})
+				in
+				    #"Duplicatas Removidas"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

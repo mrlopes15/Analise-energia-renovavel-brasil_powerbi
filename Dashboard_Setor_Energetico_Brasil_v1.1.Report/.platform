@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Dashboard_Setor_Energetico_Brasil_v1.1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e98af326-0e95-4491-8b44-90ebe8dedb4a"
+  }
+}

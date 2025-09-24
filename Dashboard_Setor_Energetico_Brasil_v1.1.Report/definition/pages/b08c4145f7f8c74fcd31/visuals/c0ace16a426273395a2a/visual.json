@@ -1,0 +1,302 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "c0ace16a426273395a2a",
+  "position": {
+    "x": 28.324948567674568,
+    "y": 327.15315595664123,
+    "z": 10000,
+    "height": 225.1833411130128,
+    "width": 1172.6528707017271,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fGeracao"
+                    }
+                  },
+                  "Property": "Empreendimento"
+                }
+              },
+              "queryRef": "fGeracao.Empreendimento",
+              "nativeQueryRef": "Empreendimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fGeracao"
+                    }
+                  },
+                  "Property": "Fase"
+                }
+              },
+              "queryRef": "fGeracao.Fase",
+              "nativeQueryRef": "Fase"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dFonte"
+                    }
+                  },
+                  "Property": "Tipo"
+                }
+              },
+              "queryRef": "dFonte.Tipo",
+              "nativeQueryRef": "Tipo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dTipoAtuacao"
+                    }
+                  },
+                  "Property": "Porte do Projeto"
+                }
+              },
+              "queryRef": "dTipoAtuacao.Porte do Projeto",
+              "nativeQueryRef": "Porte do Projeto"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fGeracao"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Entrada em Operação"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Ano"
+                }
+              },
+              "queryRef": "fGeracao.Entrada em Operação.Variation.Hierarquia de datas.Ano",
+              "nativeQueryRef": "Entrada em Operação Ano"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Potência em Operação (KW)"
+                }
+              },
+              "queryRef": "_Medidas.Potência em Operação (KW)",
+              "nativeQueryRef": "Potência em Operação (KW)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Potência Outorgada (kW)"
+                }
+              },
+              "queryRef": "_Medidas.Potência Outorgada (kW)",
+              "nativeQueryRef": "Potência Outorgada (kW)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dUsina"
+                    }
+                  },
+                  "Property": "Proprietário / Regime de Exploração"
+                }
+              },
+              "queryRef": "dUsina.Proprietário / Regime de Exploração",
+              "nativeQueryRef": "Proprietário / Regime de Exploração"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dUsina"
+                    }
+                  },
+                  "Property": "Município (s)"
+                }
+              },
+              "queryRef": "dUsina.Município (s)",
+              "nativeQueryRef": "Município (s)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dLocalizacao"
+                    }
+                  },
+                  "Property": "UF"
+                }
+              },
+              "queryRef": "dLocalizacao.UF",
+              "nativeQueryRef": "UF"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fGeracao"
+                  }
+                },
+                "Property": "Empreendimento"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "113.19292069700484D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dUsina.Município (s)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96.26840062636474D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dTipoAtuacao.Porte do Projeto"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.83752603496916D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dFonte.Tipo"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.0879263492703D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fGeracao.Fase"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139.17756053226475D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.Potência em Operação (KW)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "123.59381140310282D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.Potência Outorgada (kW)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

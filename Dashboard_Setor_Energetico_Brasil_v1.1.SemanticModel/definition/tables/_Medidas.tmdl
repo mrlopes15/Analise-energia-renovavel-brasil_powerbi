@@ -1,0 +1,114 @@
+table _Medidas
+	lineageTag: 84628295-1844-4b6f-bc5e-8273f1eb55a1
+
+	measure 'Potência em Operação (GW)' =
+			
+			CALCULATE(
+			    SUM(fGeracao[Potência Fiscalizada (kW)]) / 1000000,
+			    fGeracao[Fase] = "Operação"
+			)
+		formatString: 0.00
+		lineageTag: d55f9089-c82a-4e57-b98e-4e76401ff9f9
+
+	measure 'Potência Planejada (GW)' =
+			
+			CALCULATE(
+			    [Potência Outorgada Total (GW)],
+			    fGeracao[Fase] <> "Operação"
+			)
+		lineageTag: 924412d8-7645-44fc-9ca0-97b235f94d3b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Usinas em Operação' =
+			
+			CALCULATE(
+			    COUNTROWS(fGeracao),
+			    fGeracao[Fase] = "Operação"
+			)
+		formatString: 0
+		lineageTag: a6d7b6f7-ad86-4938-be36-8511e9371e1d
+
+	measure 'Potência Outorgada Total (GW)' =
+			
+			SUM(fGeracao[Potência Outorgada (kW)]) / 1000000
+		lineageTag: aca26358-27cd-480c-b598-df182193836e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Potência Eólica em Operação (GW)' =
+			
+			CALCULATE(
+			    [Potência em Operação (GW)],
+			    dFonte[Tipo] = "Cinética do vento"
+			)
+		lineageTag: fc18ab5c-1c1d-4d88-94be-f8028b18a23f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Contribuição Eólica por Região' =
+			
+			DIVIDE(
+			    [Potência Eólica em Operação (GW)],
+			    CALCULATE(
+			        [Potência Eólica em Operação (GW)],
+			        ALLSELECTED(dLocalizacao[Regiao])
+			    )
+			)
+		lineageTag: bc2d9e8f-ddc3-40f2-89a7-ddf9d7d0e599
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Contagem de Usinas Selecionadas' = COUNTROWS(fGeracao)
+		formatString: 0
+		lineageTag: e20f4a7e-64f6-4db4-9f49-0e9e37433b9e
+
+	measure 'Potência Total Outorgada (GW)' =
+			
+			SUM(fGeracao[Potência Outorgada (kW)]) / 1000000
+		lineageTag: 8dbadfd8-fb35-4071-8e04-f9bd50d1fe46
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Número de Complexos Únicos' =
+			
+			DISTINCTCOUNT(fGeracao[Empreendimento])
+		formatString: 0
+		lineageTag: 892dee87-dffe-4458-98d5-a4de086ec164
+
+	measure 'Potência Outorgada (kW)' =
+			
+			SUM(fGeracao[Potência Outorgada (kW)])
+		lineageTag: e0d8a8a9-9930-4664-8969-85d9557da6d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Potência em Operação (KW)' =
+			
+			CALCULATE(
+			    SUM(fGeracao[Potência Fiscalizada (kW)]),
+			    fGeracao[Fase] = "Operação"
+			)
+		lineageTag: 4b320a59-a40d-491f-a715-c64bbc32b02f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Coluna 1'
+		dataType: string
+		lineageTag: 43ad99fc-58a3-4e2e-bf03-c728e536b26f
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

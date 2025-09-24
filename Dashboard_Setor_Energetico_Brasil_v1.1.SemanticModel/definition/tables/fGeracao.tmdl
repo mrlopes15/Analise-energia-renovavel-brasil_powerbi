@@ -1,0 +1,167 @@
+table fGeracao
+	lineageTag: 1bd45bf9-aba4-4856-9a3d-c7ba60e84693
+
+	column Empreendimento
+		dataType: string
+		lineageTag: 48fe7fb2-9a18-4fc3-9dde-6eea760c97b8
+		summarizeBy: none
+		sourceColumn: Empreendimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: 47be9abc-293c-433d-9da0-1201e075ca19
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fonte
+		dataType: string
+		lineageTag: 2e50163f-0817-43ed-9051-39358dc67cdc
+		summarizeBy: none
+		sourceColumn: Fonte
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fase
+		dataType: string
+		lineageTag: d66243ff-8cdc-4c40-a42c-2ce9863dc895
+		summarizeBy: none
+		sourceColumn: Fase
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: fde1580e-3890-4ae8-bf23-4b1e08ae05ef
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Atuação'
+		dataType: string
+		lineageTag: a9c17735-cfaf-4b95-9858-87fcb824ef2f
+		summarizeBy: none
+		sourceColumn: Tipo de Atuação
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Proprietário / Regime de Exploração'
+		dataType: string
+		lineageTag: 44717e52-7c7c-48da-ae36-8e6ba6e44b4b
+		summarizeBy: none
+		sourceColumn: Proprietário / Regime de Exploração
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Município (s)'
+		dataType: string
+		lineageTag: a906788a-9b1d-477b-925e-17121d133de0
+		summarizeBy: none
+		sourceColumn: Município (s)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Potência Fiscalizada (kW)'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 06b05482-3e98-4aa1-9346-32139d5a795b
+		summarizeBy: sum
+		sourceColumn: Potência Fiscalizada (kW)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Potência Outorgada (kW)'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 34b468ae-99eb-46ad-90bb-c8adc924ea99
+		summarizeBy: sum
+		sourceColumn: Potência Outorgada (kW)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Latitude Decimal'
+		dataType: double
+		lineageTag: 683f9fbc-cecf-4d05-8b36-bddb3f69b5ab
+		summarizeBy: sum
+		sourceColumn: Latitude Decimal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Longitude Decimal'
+		dataType: double
+		lineageTag: 14259e39-08a1-4c4e-9646-c4770a8f58c2
+		summarizeBy: sum
+		sourceColumn: Longitude Decimal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Entrada em Operação'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e85f228d-85bd-4a9e-a9fb-8c18dccd3f30
+		summarizeBy: none
+		sourceColumn: Entrada em Operação
+
+		variation Variation
+			isDefault
+			relationship: 3a5337fb-0b82-4e1f-9855-d7972e1232cc
+			defaultHierarchy: LocalDateTable_2f6e5429-b43c-4e2e-86eb-c736a668be37.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fGeracao = m
+		mode: import
+		source = ```
+				let
+				    // Etapa 1: Carrega o arquivo CSV
+				    Fonte = Csv.Document(File.Contents("C:\Users\Notebook\Documents\PROGRAMAÇÃO\Projeto_Energia_Novo\dados_energia.csv"),[Delimiter=";", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Primeira Linha Removida" = Table.Skip(Fonte,1),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Primeira Linha Removida", [PromoteAllScalars=true]),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Cabeçalhos Promovidos", each ([Fonte] = "EOL" or [Fonte] = "UFV")),
+				
+				    // Etapa 5: Limpa e converte as colunas numéricas com a FÓRMULA CORRIGIDA
+				    #"Colunas Numéricas Limpas" = Table.AddColumn(#"Linhas Filtradas", "PotenciaFiscalizada_Limpa", each try Number.From( Text.Replace(Text.Replace([#"Potência Fiscalizada (kW)"], ".", ""), ",", "."), "en-US") otherwise null),
+				    #"Colunas Numéricas Limpas1" = Table.AddColumn(#"Colunas Numéricas Limpas", "PotenciaOutorgada_Limpa", each try Number.From( Text.Replace(Text.Replace([#"Potência Outorgada (kW)"], ".", ""), ",", "."), "en-US") otherwise null),
+				    #"Colunas Numéricas Limpas2" = Table.AddColumn(#"Colunas Numéricas Limpas1", "Latitude_Limpa", each try Number.From( Text.Replace([#"Latitude Decimal"], ",", "."), "en-US") otherwise null),
+				    #"Colunas Numéricas Limpas3" = Table.AddColumn(#"Colunas Numéricas Limpas2", "Longitude_Limpa", each try Number.From( Text.Replace([#"Longitude Decimal"], ",", "."), "en-US") otherwise null),
+				    #"Coluna Data Limpa" = Table.AddColumn(#"Colunas Numéricas Limpas3", "DataOperacao_Limpa", each try Date.From([#"Entrada em Operação"], "pt-BR") otherwise null),
+				
+				    // Etapa 6: Seleciona TODAS as colunas que vamos usar
+				    #"Colunas Selecionadas" = Table.SelectColumns(#"Coluna Data Limpa",{"Empreendimento", "UF", "Fonte", "Fase", "Tipo", "Tipo de Atuação", "Proprietário / Regime de Exploração", "Município (s)", "PotenciaFiscalizada_Limpa", "PotenciaOutorgada_Limpa", "Latitude_Limpa", "Longitude_Limpa", "DataOperacao_Limpa"}),
+				
+				    // Etapa 7: Renomeia as colunas limpas para seus nomes finais
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Selecionadas",{
+				        {"PotenciaFiscalizada_Limpa", "Potência Fiscalizada (kW)"}, 
+				        {"PotenciaOutorgada_Limpa", "Potência Outorgada (kW)"}, 
+				        {"Latitude_Limpa", "Latitude Decimal"}, 
+				        {"Longitude_Limpa", "Longitude Decimal"},
+				        {"DataOperacao_Limpa", "Entrada em Operação"}
+				    }),
+				
+				    // Etapa 8: Define os tipos de dados finais
+				    #"Tipos Finais Alterados" = Table.TransformColumnTypes(#"Colunas Renomeadas",{
+				        {"Empreendimento", type text}, {"UF", type text}, {"Fonte", type text}, {"Fase", type text}, 
+				        {"Tipo", type text}, {"Tipo de Atuação", type text}, 
+				        {"Proprietário / Regime de Exploração", type text}, {"Município (s)", type text},
+				        {"Entrada em Operação", type date}, 
+				        {"Potência Fiscalizada (kW)", type number}, {"Potência Outorgada (kW)", type number}, 
+				        {"Latitude Decimal", type number}, {"Longitude Decimal", type number}
+				    })
+				in
+				    #"Tipos Finais Alterados"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

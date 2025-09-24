@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 492.79998779296875,
+        "y": 36
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 893.6376719223714,
+            "y": 315.69585514655796
+          },
+          "nodeIndex": "dFonte",
+          "nodeLineageTag": "89cc165b-5513-46ce-b32c-840681377586",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 311.95423551426927
+          },
+          "nodeIndex": "dLocalizacao",
+          "nodeLineageTag": "37b43ec5-506b-4c99-ac40-b72e4f0db87f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 431.56299498294493,
+            "y": 0
+          },
+          "nodeIndex": "dTipoAtuacao",
+          "nodeLineageTag": "c1e5f8f4-40dd-48af-8d7d-5054cae4ff72",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 429.52866337684486,
+            "y": 619.8058629750094
+          },
+          "nodeIndex": "dUsina",
+          "nodeLineageTag": "1d6244bc-c1fb-4a60-9a8f-a5c4b09b1643",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 430.5860177860967,
+            "y": 228.48961814828431
+          },
+          "nodeIndex": "fGeracao",
+          "nodeLineageTag": "1bd45bf9-aba4-4856-9a3d-c7ba60e84693",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1177.6376719223713,
+            "y": 333.9029314875047
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "84628295-1844-4b6f-bc5e-8273f1eb55a1",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

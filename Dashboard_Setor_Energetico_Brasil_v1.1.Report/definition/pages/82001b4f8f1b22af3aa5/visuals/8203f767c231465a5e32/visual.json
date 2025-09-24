@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "8203f767c231465a5e32",
+  "position": {
+    "x": 608.98639420500319,
+    "y": 518.34655878844455,
+    "z": 5000,
+    "height": 201.10713483048943,
+    "width": 514.09781650329342,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "A análise geográfica confirma a forte especialização das fontes de energia renovável no Brasil. O mapa visualiza um claro "
+                  },
+                  {
+                    "value": "\"Corredor dos Ventos\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " no litoral do Nordeste, onde as maiores usinas eólicas estão concentradas. Esta observação é quantificada no ranking de estados, onde mostra os protagonistas da energia eólica e solar no Brasil, onde "
+                  },
+                  {
+                    "value": "Bahia e Rio Grande do Norte",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " como líderes isolados, com suas matrizes quase que inteiramente compostas por energia eólica."
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Em contrapartida, a "
+                  },
+                  {
+                    "value": "energia solar",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ", embora também presente no Nordeste, demonstra uma distribuição mais ampla, sendo o principal vetor que posiciona "
+                  },
+                  {
+                    "value": "Minas Gerais",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " entre os líderes nacionais do setor."
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'A Clara Divisão Geográfica do Setor'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "ignorePadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

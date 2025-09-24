@@ -1,0 +1,38 @@
+table dTipoAtuacao
+	lineageTag: c1e5f8f4-40dd-48af-8d7d-5054cae4ff72
+
+	column 'Tipo de Atuação'
+		dataType: string
+		lineageTag: a33bb20f-c3b4-4a74-b87c-74bc77a450c9
+		summarizeBy: none
+		sourceColumn: Tipo de Atuação
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Porte do Projeto'
+		dataType: string
+		lineageTag: 82e3025b-dea8-44d8-8d55-8da26f8c40e0
+		summarizeBy: none
+		sourceColumn: Porte do Projeto
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dTipoAtuacao = m
+		mode: import
+		source =
+				let
+				    Fonte = fGeracao,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"Tipo de Atuação"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas"),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Duplicatas Removidas", "Porte do Projeto", each if [Tipo de Atuação] = "Registro" then "Geração Distribuída" else if [Tipo de Atuação] = "Geração Centralizada" then "" else null),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Coluna Condicional Adicionada",{"Porte do Projeto"}),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Colunas Removidas", "Porte do Projeto", each if [Tipo de Atuação] = "Registro" then "Geração Distribuída" else if [Tipo de Atuação] = "" then "Geração Centralizada" else null),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Coluna Condicional Adicionada1",{"Porte do Projeto"}),
+				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Colunas Removidas1", "Porte do Projeto", each if [Tipo de Atuação] = "Registro" then "Geração Distribuída" else "Geração Centralizada")
+				in
+				    #"Coluna Condicional Adicionada2"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

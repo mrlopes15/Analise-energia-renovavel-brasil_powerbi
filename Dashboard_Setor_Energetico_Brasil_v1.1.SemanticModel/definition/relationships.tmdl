@@ -1,0 +1,21 @@
+relationship AutoDetected_b42ae3e7-4cb8-4869-b838-e26bf1c28038
+	fromColumn: fGeracao.Empreendimento
+	toColumn: dUsina.Empreendimento
+
+relationship AutoDetected_34e87402-7fcd-4be0-8f5f-2c4de94fda74
+	fromColumn: fGeracao.UF
+	toColumn: dLocalizacao.UF
+
+relationship AutoDetected_43a26595-676b-40c2-8bec-418ffba6d4ec
+	fromColumn: fGeracao.Fonte
+	toColumn: dFonte.Fonte
+
+relationship AutoDetected_09c7be88-ce58-4e83-ada2-94ce510bccac
+	fromColumn: fGeracao.'Tipo de Atuação'
+	toColumn: dTipoAtuacao.'Tipo de Atuação'
+
+relationship 3a5337fb-0b82-4e1f-9855-d7972e1232cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fGeracao.'Entrada em Operação'
+	toColumn: LocalDateTable_2f6e5429-b43c-4e2e-86eb-c736a668be37.Date
+
