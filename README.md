@@ -71,10 +71,9 @@ O projeto foi executado seguindo o ciclo de vida completo de um projeto de BI, d
 **4. Visualização e Storytelling (Power BI):**
    * O dashboard foi estruturado em uma narrativa visual de 4 páginas (Resumo, Análise Geográfica, Análise Estratégica e Catálogo) para guiar o usuário de uma visão macro para o detalhe, usando princípios de design para destacar os insights.
 
-**Otimização do Processo com VBA (Estudo de Caso Pós-Projeto): Após a finalização do dashboard, identifiquei uma oportunidade de aprimorar o fluxo de trabalho. Como um estudo prático para desenvolver minhas habilidades em automação, criei uma macro em VBA para otimizar a etapa inicial de extração de dados. Esta automação realiza as seguintes tarefas:
-
-	*Filtra a base de dados completa para isolar apenas as usinas de fonte 'Solar'.
-	*Exporta o resultado para uma aba dedicada ('Filtro'), criando um dataset pronto para ser consumido pelo Power Query.
+** Otimização do Processo com VBA (Estudo de Caso Pós-Projeto): Após a finalização do dashboard, identifiquei uma oportunidade de aprimorar o fluxo de trabalho. Como um estudo prático para desenvolver minhas habilidades em automação, criei uma macro em VBA para otimizar a etapa inicial de extração de dados. Esta automação realiza as seguintes tarefas:
+	* Filtra a base de dados completa para isolar apenas as usinas de fonte 'Solar' e 'Eólica.
+	* Exporta o resultado para uma aba dedicada ('Filtro'), criando um dataset pronto para ser consumido pelo Power Query.
 
 Esta etapa adicional demonstra como um processo manual pode ser transformado em uma solução automatizada, tornando futuras atualizações do dashboard mais rápidas e menos suscetíveis a erros.
 ---
@@ -91,12 +90,12 @@ Esta etapa adicional demonstra como um processo manual pode ser transformado em 
 
 Neste repositório, você encontrará dois formatos principais:
 
-*Automação em Excel
+* Automação em Excel
 
-* **Automacao_Energia_Solar.xlsm:** A ferramenta Excel que contém a macro, os dados brutos e o botão de execução para extrair os dados solares.
-* **FiltroEnergiaSolar.bas:** O arquivo de código-fonte da macro, exportado para fácil visualização diretamente no GitHub.
+* **Automacao_Energia_Solar_Eolica.xlsm:** A ferramenta Excel que contém a macro, os dados brutos e o botão de execução para extrair os dados solares e eólicos.
+* **FiltroEnergiaSolarEolica.bas:** O arquivo de código-fonte da macro, exportado para fácil visualização diretamente no GitHub.
 
-*Dashboard em Power BI
+* Dashboard em Power BI
 
 * **`.pbip` (Power BI Project):** Este é o arquivo fonte principal, ideal para versionamento e para visualizar as mudanças no código DAX.
 * **`.pbix` (Power BI Desktop):** Uma versão compilada do projeto para fácil visualização por qualquer pessoa que tenha o Power BI Desktop instalado.
