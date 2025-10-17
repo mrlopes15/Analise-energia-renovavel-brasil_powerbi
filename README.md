@@ -11,7 +11,7 @@ O setor de energia renovável no Brasil vive um crescimento exponencial, tornand
 
 Este projeto foi desenvolvido para resolver essa lacuna, respondendo à pergunta de negócio central:
 
-	**"Qual é o panorama da capacidade instalada de energia solar e eólica no Brasil, quais são seus principais vetores de crescimento e os desafios para a expansão futura?"**
+	** "Qual é o panorama da capacidade instalada de energia solar e eólica no Brasil, quais são seus principais vetores de crescimento e os desafios para a expansão futura?"**
 
 O objetivo é transformar a massa de dados em uma ferramenta de inteligência visual que permita a qualquer stakeholder:
 	* **Identificar Oportunidades**, ao visualizar rapidamente os estados e regiões com maior crescimento e potencial.
@@ -71,9 +71,12 @@ O projeto foi executado seguindo o ciclo de vida completo de um projeto de BI, d
 **4. Visualização e Storytelling (Power BI):**
    * O dashboard foi estruturado em uma narrativa visual de 4 páginas (Resumo, Análise Geográfica, Análise Estratégica e Catálogo) para guiar o usuário de uma visão macro para o detalhe, usando princípios de design para destacar os insights.
 
-** Otimização do Processo com VBA (Estudo de Caso Pós-Projeto): Após a finalização do dashboard, identifiquei uma oportunidade de aprimorar o fluxo de trabalho. Como um estudo prático para desenvolver minhas habilidades em automação, criei uma macro em VBA para otimizar a etapa inicial de extração de dados. Esta automação realiza as seguintes tarefas:
-	* Filtra a base de dados completa para isolar apenas as usinas de fonte 'Solar' e 'Eólica.
-	* Exporta o resultado para uma aba dedicada ('Filtro'), criando um dataset pronto para ser consumido pelo Power Query.
+### Otimização do Processo com VBA (Estudo de Caso Pós-Projeto): 
+
+Após a finalização do dashboard, identifiquei uma oportunidade de aprimorar o fluxo de trabalho. Como um estudo prático para desenvolver minhas habilidades em automação, criei uma macro em VBA para otimizar a etapa inicial de extração de dados. Esta automação realiza as seguintes tarefas:
+
+* Filtra a base de dados completa para isolar apenas as usinas de fonte 'Solar' e 'Eólica.
+* Exporta o resultado para uma aba dedicada ('Filtro'), criando um dataset pronto para ser consumido pelo Power Query.
 
 Esta etapa adicional demonstra como um processo manual pode ser transformado em uma solução automatizada, tornando futuras atualizações do dashboard mais rápidas e menos suscetíveis a erros.
 ---
