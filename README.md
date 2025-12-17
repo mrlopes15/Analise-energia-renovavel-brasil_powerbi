@@ -14,9 +14,9 @@ Este projeto foi desenvolvido para resolver essa lacuna, respondendo à pergunta
 	** "Qual é o panorama da capacidade instalada de energia solar e eólica no Brasil, quais são seus principais vetores de crescimento e os desafios para a expansão futura?"**
 
 O objetivo é transformar a massa de dados em uma ferramenta de inteligência visual que permita a qualquer stakeholder:
-	* **Identificar Oportunidades**, ao visualizar rapidamente os estados e regiões com maior crescimento e potencial.
-	* **Compreender Estratégias**, ao analisar a dinâmica de especialização e o perfil de investimento de cada região.
-	* **Avaliar o Potencial**, ao quantificar o pipeline de projetos futuros e entender a natureza da expansão do setor.
+* **Identificar Oportunidades**, ao visualizar rapidamente os estados e regiões com maior crescimento e potencial.
+* **Compreender Estratégias**, ao analisar a dinâmica de especialização e o perfil de investimento de cada região.
+* **Avaliar o Potencial**, ao quantificar o pipeline de projetos futuros e entender a natureza da expansão do setor.
 
 
 
